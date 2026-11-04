@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-dot: rgba(0, 0, 0, 0.05);
+  }
+  .dark {
+    --bg-dot: rgba(255, 255, 255, 0.04);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    overflow-y: auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: -0.011em;
+  }
+  
+  body {
+    min-height: 100vh;
+    overflow-x: clip;
+    overflow-y: auto;
+    background-color: #fafafa;
+    color: #09090b;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .dark body {
+    background-color: #09090b;
+    color: #f4f4f5;
+  }
+}
+
+/* Subtle modern architectural dot grid background */
+.bg-grid-pattern {
+  background-image: radial-gradient(var(--bg-dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Subtle noise texture */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ── Keyframe animations ── */
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-8px);  }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(99,102,241,0.3);  }
+  50%       { border-color: rgba(99,102,241,0.8);  }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Utility classes */
+.animate-float        { animation: float 4s ease-in-out infinite; }
+.animate-gradient     { animation: gradientShift 5s ease infinite; background-size: 200% 200%; }
+.animate-border-pulse { animation: borderPulse 2.4s ease-in-out infinite; }
+.animate-slide-left   { animation: slideInLeft 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+.animate-slide-up     { animation: slideInUp  0.5s cubic-bezier(0.22,1,0.36, 1) both; }
+
+/* Shimmer text effect for section headings */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #09090b 0%, #09090b 35%,
+    #6366f1 50%,
+    #09090b 65%, #09090b 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+.dark .text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f4f4f5 0%, #f4f4f5 35%,
+    #818cf8 50%,
+    #f4f4f5 65%, #f4f4f5 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Card glow on hover */
+.card-glow {
+  transition: box-shadow 0.25s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.08);
+}
+.dark .card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(129,140,248,0.25), 0 8px 32px rgba(129,140,248,0.1);
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.6);
+}
