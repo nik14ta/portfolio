@@ -182,14 +182,6 @@ export default function NikitaMascot() {
             </motion.div>
           </div>
         </div>
-
-        {/* "Tap to speak" Pill under character */}
-        <motion.div
-          className="mt-2.5 px-3.5 py-1 rounded-full bg-white/95 dark:bg-pink-950/70 border border-pink-300/70 dark:border-pink-800/60 text-[11px] font-bold text-pink-700 dark:text-pink-300 shadow-xs flex items-center justify-center gap-1.5 mx-auto w-fit"
-          whileHover={{ scale: 1.06 }}
-        >
-          <span>💖 Nikita's Avatar</span>
-        </motion.div>
       </motion.div>
     </motion.div>
   );
