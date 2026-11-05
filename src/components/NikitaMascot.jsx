@@ -18,26 +18,72 @@ export default function NikitaMascot() {
     "Thanks for visiting! Feel free to say hi! 💌",
   ];
 
-  // Browser Text-To-Speech with a cute, friendly voice pitch
+  // Helper to pick guaranteed pleasant female voice across Windows (Zira/Jenny), Android/Chrome (Google UK/US Female), iOS (Samantha/Karen)
+  const getFemaleVoice = () => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
+    const voices = window.speechSynthesis.getVoices();
+    if (!voices || voices.length === 0) return null;
+
+    // Prioritized list of known high-quality female voices
+    const femaleNames = [
+      'Microsoft Zira',
+      'Microsoft Jenny',
+      'Google UK English Female',
+      'Google US English',
+      'Samantha',
+      'Karen',
+      'Victoria',
+      'Moira',
+      'Fiona',
+      'Tessa',
+      'Veena',
+      'Heera',
+    ];
+
+    for (const name of femaleNames) {
+      const match = voices.find((v) => v.name.toLowerCase().includes(name.toLowerCase()));
+      if (match) return match;
+    }
+
+    // Secondary search: explicitly contains 'female' in the voice name/metadata
+    const anyFemale = voices.find(
+      (v) =>
+        v.lang.startsWith('en') &&
+        (v.name.toLowerCase().includes('female') ||
+          v.name.toLowerCase().includes('woman') ||
+          v.name.toLowerCase().includes('girl'))
+    );
+    if (anyFemale) return anyFemale;
+
+    // Fallback: pick any English voice that is NOT David, Mark, George, or Ravi (common male defaults on Windows)
+    const notMale = voices.find(
+      (v) =>
+        v.lang.startsWith('en') &&
+        !v.name.toLowerCase().includes('david') &&
+        !v.name.toLowerCase().includes('mark') &&
+        !v.name.toLowerCase().includes('george') &&
+        !v.name.toLowerCase().includes('ravi')
+    );
+    if (notMale) return notMale;
+
+    return voices[0] || null;
+  };
+
+  // Browser Text-To-Speech with guaranteed female voice & youthful pitch
   const speakMessage = (text) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     try {
       window.speechSynthesis.cancel(); // Stop any pending speech
-      // Clean emojis out for smoother speech synthesis
       const cleanText = text.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
       const utterance = new SpeechSynthesisUtterance(cleanText);
 
-      // Look for a pleasant female voice (e.g. Google US English, Samantha, Zira)
-      const voices = window.speechSynthesis.getVoices();
-      const preferredVoice = voices.find(
-        (v) =>
-          (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Zira') || v.name.includes('Natural') || v.name.includes('Female')) &&
-          v.lang.startsWith('en')
-      ) || voices.find((v) => v.lang.startsWith('en'));
+      const femaleVoice = getFemaleVoice();
+      if (femaleVoice) {
+        utterance.voice = femaleVoice;
+      }
 
-      if (preferredVoice) utterance.voice = preferredVoice;
-      utterance.rate = 1.05; // Slightly lively
-      utterance.pitch = 1.25; // Gentle, friendly, youthful pitch
+      utterance.rate = 1.02; // Natural, lively pace
+      utterance.pitch = 1.35; // Gentle, friendly, distinctly feminine pitch
 
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
