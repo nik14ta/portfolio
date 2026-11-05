@@ -111,7 +111,7 @@ export default function NikitaMascot() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Floating Animated Character Illustration */}
+      {/* Floating Animated Character (Nikita's Official Cafe-Vibe Avatar) */}
       <motion.div
         className="relative"
         animate={{
@@ -122,199 +122,75 @@ export default function NikitaMascot() {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.96 }}
       >
-        {/* Soft background glow aura */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-400/25 via-rose-300/30 to-purple-400/20 blur-xl scale-125 pointer-events-none" />
+        {/* Soft background warm-rose glow aura */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-pink-400/20 via-rose-300/25 to-purple-400/15 blur-2xl scale-110 pointer-events-none" />
 
         {/* Floating Sparkle Accents */}
         <motion.span
-          className="absolute -top-2 -right-2 text-pink-400 text-sm pointer-events-none"
-          animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+          className="absolute -top-3 -right-2 text-pink-400 text-base pointer-events-none z-20"
+          animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.25, 1] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           ✨
         </motion.span>
         <motion.span
-          className="absolute top-1/2 -left-3 text-rose-400 text-xs pointer-events-none"
-          animate={{ y: [0, -4, 0], opacity: [0.7, 1, 0.7] }}
+          className="absolute top-1/2 -left-4 text-rose-400 text-sm pointer-events-none z-20"
+          animate={{ y: [0, -5, 0], opacity: [0.7, 1, 0.7] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
         >
           🌸
         </motion.span>
 
-        {/* The Character SVG (Chic 22-Year-Old Young Woman Developer) */}
-        <svg
-          viewBox="0 0 160 210"
-          className="w-40 h-52 sm:w-48 sm:h-60 drop-shadow-xl"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="blazerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f43f5e" />
-              <stop offset="100%" stopColor="#db2777" />
-            </linearGradient>
-            <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#2c1a29" />
-              <stop offset="100%" stopColor="#1a0c18" />
-            </linearGradient>
-            <linearGradient id="laptopGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-          </defs>
-
-          {/* Long Elegant Flowing Hair Behind Shoulders */}
-          <path
-            d="M48 65 C32 90, 26 140, 38 175 C45 160, 48 135, 52 105 Z"
-            fill="url(#hairGrad)"
-          />
-          <path
-            d="M112 65 C128 90, 134 140, 122 175 C115 160, 112 135, 108 105 Z"
-            fill="url(#hairGrad)"
-          />
-
-          {/* Shoulders & Stylish Rose Blazer / Fitted Top */}
-          <path
-            d="M50 138 C50 120, 64 114, 80 114 C96 114, 110 120, 110 138 L116 186 C116 194, 108 198, 100 198 L60 198 C52 198, 44 194, 44 186 Z"
-            fill="url(#blazerGrad)"
-          />
-          {/* Chic inner V-neck top */}
-          <path
-            d="M72 114 L80 138 L88 114 Z"
-            fill="#ffffff"
-          />
-          {/* Dainty Gold Pendant Necklace ✨ */}
-          <path
-            d="M74 118 Q80 132 86 118"
-            stroke="#fbbf24"
-            strokeWidth="1.2"
-            fill="none"
-          />
-          <circle cx="80" cy="126" r="1.8" fill="#f59e0b" />
-
-          {/* Blazer lapels */}
-          <path
-            d="M60 124 L74 150 L70 178"
-            stroke="#be185d"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <path
-            d="M100 124 L86 150 L90 178"
-            stroke="#be185d"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-
-          {/* Slender Neck */}
-          <rect x="75" y="94" width="10" height="24" rx="5" fill="#fde68a" opacity="0.9" />
-
-          {/* Elegant Oval Face */}
-          <path
-            d="M62 62 C62 45, 68 35, 80 35 C92 35, 98 45, 98 62 C98 82, 88 98, 80 98 C72 98, 62 82, 62 62 Z"
-            fill="#fef3c7"
-          />
-
-          {/* Styled Long Brunette Hair with Side Parting & Soft Waves */}
-          <path
-            d="M60 62 C58 35, 70 24, 80 24 C95 24, 102 34, 100 62 C96 52, 90 44, 80 42 C70 40, 64 50, 60 62 Z"
-            fill="url(#hairGrad)"
-          />
-          {/* Soft Hair Strands framing face */}
-          <path
-            d="M61 55 C59 75, 58 105, 64 120 C66 110, 66 85, 65 65 Z"
-            fill="url(#hairGrad)"
-          />
-          <path
-            d="M99 55 C101 75, 102 105, 96 120 C94 110, 94 85, 95 65 Z"
-            fill="url(#hairGrad)"
-          />
-
-          {/* Chic Pearl Earrings ✨ */}
-          <circle cx="61" cy="74" r="2.5" fill="#fef08a" stroke="#d97706" strokeWidth="0.5" />
-          <circle cx="99" cy="74" r="2.5" fill="#fef08a" stroke="#d97706" strokeWidth="0.5" />
-
-          {/* Natural Defined Eyebrows */}
-          <path d="M68 56 Q73 52 78 55" stroke="#2c1a29" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M82 55 Q87 52 92 56" stroke="#2c1a29" strokeWidth="1.8" strokeLinecap="round" />
-
-          {/* Expressive Warm Almond Eyes with Eyelashes */}
-          {/* Left Eye */}
-          <ellipse cx="73" cy="64" rx="3.8" ry="4.5" fill="#1f1224" />
-          <circle cx="71.8" cy="62.5" r="1.4" fill="white" />
-          <circle cx="74" cy="65.5" r="0.8" fill="white" />
-          <path d="M69 60 Q74 58 78 61" stroke="#1f1224" strokeWidth="1.4" strokeLinecap="round" />
-
-          {/* Right Eye */}
-          <ellipse cx="87" cy="64" rx="3.8" ry="4.5" fill="#1f1224" />
-          <circle cx="85.8" cy="62.5" r="1.4" fill="white" />
-          <circle cx="88" cy="65.5" r="0.8" fill="white" />
-          <path d="M82 61 Q86 58 91 60" stroke="#1f1224" strokeWidth="1.4" strokeLinecap="round" />
-
-          {/* Subtle Delicate Nose */}
-          <path d="M79 69 L80 73 L82 73" stroke="#f59e0b" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
-
-          {/* Soft Feminine Cheek Blush */}
-          <ellipse cx="67" cy="73" rx="4.5" ry="2.5" fill="#fb7185" opacity="0.3" />
-          <ellipse cx="93" cy="73" rx="4.5" ry="2.5" fill="#fb7185" opacity="0.3" />
-
-          {/* Polished Rose Lipstick Smile 💄 */}
-          <path
-            d="M76 80 Q80 85 84 80"
-            stroke="#e11d48"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            fill="#f43f5e"
-          />
-
-          {/* Slim Sleek Ultrabook / Laptop */}
-          <g transform="translate(56, 150)">
-            {/* Laptop Base with bevel */}
-            <rect x="0" y="8" width="36" height="4" rx="2" fill="#cbd5e1" />
-            <rect x="1" y="9" width="34" height="2" rx="1" fill="#94a3b8" />
-            {/* Glossy Sleek Screen */}
-            <rect x="3" y="-14" width="30" height="22" rx="3" fill="#0f172a" />
-            <rect x="5" y="-12" width="26" height="18" rx="2" fill="url(#laptopGlow)" opacity="0.85" />
-            {/* Code / Analytics UI lines */}
-            <line x1="8" y1="-7" x2="18" y2="-7" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="8" y1="-3" x2="25" y2="-3" stroke="#fed7aa" strokeWidth="1.4" strokeLinecap="round" />
-            <line x1="8" y1="1" x2="21" y2="1" stroke="#a7f3d0" strokeWidth="1.4" strokeLinecap="round" />
-            {/* Manicured Hands typing */}
-            <circle cx="2" cy="10" r="3.5" fill="#fef3c7" />
-            <circle cx="34" cy="10" r="3.5" fill="#fef3c7" />
-          </g>
-
-          {/* Right Arm: Natural Graceful Wave 👋 */}
-          <motion.g
-            animate={
-              isWaving
-                ? { rotate: [0, 20, -16, 20, -12, 16, 0] }
-                : { rotate: [0, 8, 0] }
-            }
-            transition={{
-              duration: isWaving ? 1.1 : 3.5,
-              repeat: isWaving ? 0 : Infinity,
-              ease: 'easeInOut',
-            }}
-            style={{ transformOrigin: '110px 135px' }}
-          >
-            <path
-              d="M110 135 C118 126, 126 112, 130 98"
-              stroke="#f43f5e"
-              strokeWidth="7"
-              strokeLinecap="round"
+        {/* Portrait Container */}
+        <div className="relative rounded-3xl p-1.5 bg-gradient-to-tr from-rose-300/60 via-pink-200/50 to-purple-300/60 shadow-xl shadow-rose-500/10 backdrop-blur-sm">
+          <div className="relative w-56 sm:w-64 aspect-square rounded-[22px] overflow-hidden bg-rose-50/50">
+            {/* The Custom Stylized 2D Illustration */}
+            <img
+              src="/nikita_avatar.jpg"
+              alt="Nikita Rathour - AI & Full Stack Developer"
+              className="w-full h-full object-cover object-center"
+              onError={(e) => {
+                // Smooth fallback if image is loading
+                e.currentTarget.style.display = 'none';
+                if (e.currentTarget.nextElementSibling) {
+                  e.currentTarget.nextElementSibling.style.display = 'block';
+                }
+              }}
             />
-            {/* Graceful Hand */}
-            <circle cx="132" cy="94" r="4.5" fill="#fef3c7" />
-            {/* Waving fingers */}
-            <ellipse cx="130" cy="89" rx="1.5" ry="3.2" fill="#fef3c7" transform="rotate(-15 130 89)" />
-            <ellipse cx="134" cy="88" rx="1.5" ry="3.5" fill="#fef3c7" />
-            <ellipse cx="138" cy="90" rx="1.5" ry="3.2" fill="#fef3c7" transform="rotate(15 138 90)" />
-          </motion.g>
-        </svg>
+
+            {/* Fallback SVG if image not yet copied */}
+            <div style={{ display: 'none' }} className="w-full h-full">
+              <svg viewBox="0 0 160 215" className="w-full h-full" fill="none">
+                <rect width="100%" height="100%" fill="#fff1f2" />
+              </svg>
+            </div>
+
+            {/* Subtle gloss overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none" />
+
+            {/* Waving Hand Overlay Badge 👋 */}
+            <motion.div
+              className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border border-rose-200/80 dark:border-rose-800/60 text-xs font-semibold text-rose-600 dark:text-rose-300 shadow-sm flex items-center gap-1.5"
+              animate={isWaving ? { rotate: [0, 18, -14, 18, 0], scale: [1, 1.15, 1] } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <span>{isWaving ? '👋' : '✨'}</span>
+              <span className="text-[11px]">Nikita</span>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* "Tap to speak" Pill under character */}
+        <motion.div
+          className="mt-2.5 px-3.5 py-1 rounded-full bg-white/95 dark:bg-pink-950/70 border border-pink-300/70 dark:border-pink-800/60 text-[11px] font-bold text-pink-700 dark:text-pink-300 shadow-xs flex items-center justify-center gap-1.5 mx-auto w-fit"
+          whileHover={{ scale: 1.06 }}
+        >
+          <span>💖 Nikita's Avatar</span>
+        </motion.div>
+      </motion.div>
 
         {/* "Tap Me!" Pill under character */}
         <motion.div
