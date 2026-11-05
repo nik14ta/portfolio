@@ -144,133 +144,175 @@ export default function NikitaMascot() {
           🌸
         </motion.span>
 
-        {/* The Character SVG (Cute Developer Chibi Nikita) */}
+        {/* The Character SVG (Chic 22-Year-Old Young Woman Developer) */}
         <svg
-          viewBox="0 0 160 180"
-          className="w-36 h-40 sm:w-44 sm:h-48 drop-shadow-xl"
+          viewBox="0 0 160 210"
+          className="w-40 h-52 sm:w-48 sm:h-60 drop-shadow-xl"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Hair Back */}
+          <defs>
+            <linearGradient id="blazerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f43f5e" />
+              <stop offset="100%" stopColor="#db2777" />
+            </linearGradient>
+            <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#2c1a29" />
+              <stop offset="100%" stopColor="#1a0c18" />
+            </linearGradient>
+            <linearGradient id="laptopGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ec4899" />
+              <stop offset="100%" stopColor="#8b5cf6" />
+            </linearGradient>
+          </defs>
+
+          {/* Long Elegant Flowing Hair Behind Shoulders */}
           <path
-            d="M38 65 C30 95, 26 130, 36 150 C44 145, 46 115, 48 95 Z"
-            fill="#2c1a29"
+            d="M48 65 C32 90, 26 140, 38 175 C45 160, 48 135, 52 105 Z"
+            fill="url(#hairGrad)"
           />
           <path
-            d="M122 65 C130 95, 134 130, 124 150 C116 145, 114 115, 112 95 Z"
-            fill="#2c1a29"
+            d="M112 65 C128 90, 134 140, 122 175 C115 160, 112 135, 108 105 Z"
+            fill="url(#hairGrad)"
           />
 
-          {/* Body / Cute Pink Hoodie */}
+          {/* Shoulders & Stylish Rose Blazer / Fitted Top */}
           <path
-            d="M48 130 C48 115, 62 108, 80 108 C98 108, 112 115, 112 130 L118 165 C118 172, 112 176, 105 176 L55 176 C48 176, 42 172, 42 165 Z"
-            fill="#fda4af"
+            d="M50 138 C50 120, 64 114, 80 114 C96 114, 110 120, 110 138 L116 186 C116 194, 108 198, 100 198 L60 198 C52 198, 44 194, 44 186 Z"
+            fill="url(#blazerGrad)"
           />
-          {/* Hoodie pocket & collar */}
+          {/* Chic inner V-neck top */}
           <path
-            d="M66 112 C72 122, 88 122, 94 112"
-            stroke="#f43f5e"
-            strokeWidth="3"
+            d="M72 114 L80 138 L88 114 Z"
+            fill="#ffffff"
+          />
+          {/* Dainty Gold Pendant Necklace ✨ */}
+          <path
+            d="M74 118 Q80 132 86 118"
+            stroke="#fbbf24"
+            strokeWidth="1.2"
+            fill="none"
+          />
+          <circle cx="80" cy="126" r="1.8" fill="#f59e0b" />
+
+          {/* Blazer lapels */}
+          <path
+            d="M60 124 L74 150 L70 178"
+            stroke="#be185d"
+            strokeWidth="2"
             strokeLinecap="round"
           />
           <path
-            d="M60 148 C60 142, 100 142, 100 148 L96 166 L64 166 Z"
-            fill="#fecdd3"
-          />
-          {/* Little heart icon on hoodie */}
-          <path
-            d="M80 135 C77 131, 72 131, 72 136 C72 141, 80 146, 80 146 C80 146, 88 141, 88 136 C88 131, 83 131, 80 135 Z"
-            fill="#f43f5e"
+            d="M100 124 L86 150 L90 178"
+            stroke="#be185d"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
 
-          {/* Neck */}
-          <rect x="74" y="98" width="12" height="14" rx="4" fill="#fed7aa" />
+          {/* Slender Neck */}
+          <rect x="75" y="94" width="10" height="24" rx="5" fill="#fde68a" opacity="0.9" />
 
-          {/* Head */}
-          <circle cx="80" cy="68" r="34" fill="#ffedd5" />
-
-          {/* Cute Haircut (Bangs & Framing) */}
+          {/* Elegant Oval Face */}
           <path
-            d="M46 64 C46 36, 60 26, 80 26 C100 26, 114 36, 114 64 C114 68, 108 55, 102 52 C96 50, 92 56, 84 52 C78 50, 74 56, 68 52 C60 55, 46 68, 46 64 Z"
-            fill="#361f32"
+            d="M62 62 C62 45, 68 35, 80 35 C92 35, 98 45, 98 62 C98 82, 88 98, 80 98 C72 98, 62 82, 62 62 Z"
+            fill="#fef3c7"
           />
 
-          {/* Cute Hair Ribbon / Bow on Side 🎀 */}
-          <g transform="translate(102, 34)">
-            <ellipse cx="0" cy="0" rx="6" ry="4" fill="#fb7185" transform="rotate(-25)" />
-            <ellipse cx="8" cy="-3" rx="6" ry="4" fill="#fb7185" transform="rotate(25)" />
-            <circle cx="4" cy="-1" r="3" fill="#f43f5e" />
-          </g>
-
-          {/* Left Eye (Sparkling & Happy) */}
-          <ellipse cx="68" cy="68" rx="4.5" ry="6" fill="#31192e" />
-          <circle cx="66.5" cy="66" r="2" fill="white" />
-          <circle cx="69.5" cy="71" r="1" fill="white" />
-
-          {/* Right Eye (Sparkling or Winking) */}
-          <ellipse cx="92" cy="68" rx="4.5" ry="6" fill="#31192e" />
-          <circle cx="90.5" cy="66" r="2" fill="white" />
-          <circle cx="93.5" cy="71" r="1" fill="white" />
-
-          {/* Eyebrows */}
-          <path d="M63 59 Q68 56 73 59" stroke="#361f32" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M87 59 Q92 56 97 59" stroke="#361f32" strokeWidth="1.8" strokeLinecap="round" />
-
-          {/* Cute Pink Blushing Cheeks 🌸 */}
-          <ellipse cx="61" cy="76" rx="6" ry="3.5" fill="#f43f5e" opacity="0.35" />
-          <ellipse cx="99" cy="76" rx="6" ry="3.5" fill="#f43f5e" opacity="0.35" />
-
-          {/* Happy Smiling Mouth */}
+          {/* Styled Long Brunette Hair with Side Parting & Soft Waves */}
           <path
-            d="M75 77 Q80 84 85 77"
+            d="M60 62 C58 35, 70 24, 80 24 C95 24, 102 34, 100 62 C96 52, 90 44, 80 42 C70 40, 64 50, 60 62 Z"
+            fill="url(#hairGrad)"
+          />
+          {/* Soft Hair Strands framing face */}
+          <path
+            d="M61 55 C59 75, 58 105, 64 120 C66 110, 66 85, 65 65 Z"
+            fill="url(#hairGrad)"
+          />
+          <path
+            d="M99 55 C101 75, 102 105, 96 120 C94 110, 94 85, 95 65 Z"
+            fill="url(#hairGrad)"
+          />
+
+          {/* Chic Pearl Earrings ✨ */}
+          <circle cx="61" cy="74" r="2.5" fill="#fef08a" stroke="#d97706" strokeWidth="0.5" />
+          <circle cx="99" cy="74" r="2.5" fill="#fef08a" stroke="#d97706" strokeWidth="0.5" />
+
+          {/* Natural Defined Eyebrows */}
+          <path d="M68 56 Q73 52 78 55" stroke="#2c1a29" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M82 55 Q87 52 92 56" stroke="#2c1a29" strokeWidth="1.8" strokeLinecap="round" />
+
+          {/* Expressive Warm Almond Eyes with Eyelashes */}
+          {/* Left Eye */}
+          <ellipse cx="73" cy="64" rx="3.8" ry="4.5" fill="#1f1224" />
+          <circle cx="71.8" cy="62.5" r="1.4" fill="white" />
+          <circle cx="74" cy="65.5" r="0.8" fill="white" />
+          <path d="M69 60 Q74 58 78 61" stroke="#1f1224" strokeWidth="1.4" strokeLinecap="round" />
+
+          {/* Right Eye */}
+          <ellipse cx="87" cy="64" rx="3.8" ry="4.5" fill="#1f1224" />
+          <circle cx="85.8" cy="62.5" r="1.4" fill="white" />
+          <circle cx="88" cy="65.5" r="0.8" fill="white" />
+          <path d="M82 61 Q86 58 91 60" stroke="#1f1224" strokeWidth="1.4" strokeLinecap="round" />
+
+          {/* Subtle Delicate Nose */}
+          <path d="M79 69 L80 73 L82 73" stroke="#f59e0b" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+
+          {/* Soft Feminine Cheek Blush */}
+          <ellipse cx="67" cy="73" rx="4.5" ry="2.5" fill="#fb7185" opacity="0.3" />
+          <ellipse cx="93" cy="73" rx="4.5" ry="2.5" fill="#fb7185" opacity="0.3" />
+
+          {/* Polished Rose Lipstick Smile 💄 */}
+          <path
+            d="M76 80 Q80 85 84 80"
             stroke="#e11d48"
             strokeWidth="2.2"
             strokeLinecap="round"
-            fill="#fda4af"
+            fill="#f43f5e"
           />
 
-          {/* Left Hand Holding Mini Laptop with Glowing Screen */}
-          <g transform="translate(54, 138)">
-            {/* Laptop Base */}
-            <rect x="0" y="8" width="36" height="5" rx="2" fill="#e2e8f0" />
-            {/* Laptop Screen */}
-            <rect x="3" y="-12" width="30" height="20" rx="3" fill="#3b82f6" />
-            <rect x="5" y="-10" width="26" height="16" rx="2" fill="#eff6ff" />
-            {/* Cute code lines on screen */}
-            <line x1="8" y1="-5" x2="18" y2="-5" stroke="#f43f5e" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="8" y1="-1" x2="24" y2="-1" stroke="#8b5cf6" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="8" y1="3" x2="20" y2="3" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" />
-            {/* Hands typing */}
-            <circle cx="2" cy="10" r="4.5" fill="#ffedd5" />
-            <circle cx="34" cy="10" r="4.5" fill="#ffedd5" />
+          {/* Slim Sleek Ultrabook / Laptop */}
+          <g transform="translate(56, 150)">
+            {/* Laptop Base with bevel */}
+            <rect x="0" y="8" width="36" height="4" rx="2" fill="#cbd5e1" />
+            <rect x="1" y="9" width="34" height="2" rx="1" fill="#94a3b8" />
+            {/* Glossy Sleek Screen */}
+            <rect x="3" y="-14" width="30" height="22" rx="3" fill="#0f172a" />
+            <rect x="5" y="-12" width="26" height="18" rx="2" fill="url(#laptopGlow)" opacity="0.85" />
+            {/* Code / Analytics UI lines */}
+            <line x1="8" y1="-7" x2="18" y2="-7" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="8" y1="-3" x2="25" y2="-3" stroke="#fed7aa" strokeWidth="1.4" strokeLinecap="round" />
+            <line x1="8" y1="1" x2="21" y2="1" stroke="#a7f3d0" strokeWidth="1.4" strokeLinecap="round" />
+            {/* Manicured Hands typing */}
+            <circle cx="2" cy="10" r="3.5" fill="#fef3c7" />
+            <circle cx="34" cy="10" r="3.5" fill="#fef3c7" />
           </g>
 
-          {/* Right Arm: Animated Waving Hand 👋 */}
+          {/* Right Arm: Natural Graceful Wave 👋 */}
           <motion.g
             animate={
               isWaving
-                ? { rotate: [0, 22, -18, 22, -14, 18, 0] }
-                : { rotate: [0, 10, 0] }
+                ? { rotate: [0, 20, -16, 20, -12, 16, 0] }
+                : { rotate: [0, 8, 0] }
             }
             transition={{
-              duration: isWaving ? 1.1 : 3,
+              duration: isWaving ? 1.1 : 3.5,
               repeat: isWaving ? 0 : Infinity,
               ease: 'easeInOut',
             }}
-            style={{ transformOrigin: '112px 125px' }}
+            style={{ transformOrigin: '110px 135px' }}
           >
             <path
-              d="M112 125 C122 118, 128 105, 132 94"
-              stroke="#fda4af"
-              strokeWidth="9"
+              d="M110 135 C118 126, 126 112, 130 98"
+              stroke="#f43f5e"
+              strokeWidth="7"
               strokeLinecap="round"
             />
-            {/* Waving Hand Palm */}
-            <circle cx="134" cy="90" r="5.5" fill="#ffedd5" />
-            {/* Little fingers waving */}
-            <ellipse cx="132" cy="85" rx="1.8" ry="3.5" fill="#ffedd5" transform="rotate(-15 132 85)" />
-            <ellipse cx="136" cy="84" rx="1.8" ry="3.8" fill="#ffedd5" />
-            <ellipse cx="140" cy="86" rx="1.8" ry="3.5" fill="#ffedd5" transform="rotate(15 140 86)" />
+            {/* Graceful Hand */}
+            <circle cx="132" cy="94" r="4.5" fill="#fef3c7" />
+            {/* Waving fingers */}
+            <ellipse cx="130" cy="89" rx="1.5" ry="3.2" fill="#fef3c7" transform="rotate(-15 130 89)" />
+            <ellipse cx="134" cy="88" rx="1.5" ry="3.5" fill="#fef3c7" />
+            <ellipse cx="138" cy="90" rx="1.5" ry="3.2" fill="#fef3c7" transform="rotate(15 138 90)" />
           </motion.g>
         </svg>
 
