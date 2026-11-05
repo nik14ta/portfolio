@@ -26,21 +26,21 @@ export default function Hero({ openCommandPalette }) {
   return (
     <section id="hero" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
 
-      {/* Floating Dreamy Ambient Orbs (Pinterest Soft Pastels) */}
+      {/* Floating Dreamy Ambient Orbs (Soft, muted on mobile to prevent over-saturation) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-24 -left-20 w-[420px] h-[420px] rounded-full bg-pink-300/25 dark:bg-pink-600/12 blur-3xl"
-          animate={{ scale: [1, 1.2, 1], x: [0, 25, 0], y: [0, -20, 0] }}
+          className="absolute -top-24 -left-20 w-[380px] h-[380px] rounded-full bg-pink-200/15 sm:bg-pink-300/20 dark:bg-pink-600/8 blur-3xl"
+          animate={{ scale: [1, 1.15, 1], x: [0, 20, 0], y: [0, -15, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute top-1/4 -right-20 w-96 h-96 rounded-full bg-purple-300/25 dark:bg-purple-600/12 blur-3xl"
-          animate={{ scale: [1, 1.18, 1], x: [0, -20, 0], y: [0, 25, 0] }}
+          className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-purple-200/15 sm:bg-purple-300/18 dark:bg-purple-600/8 blur-3xl"
+          animate={{ scale: [1, 1.12, 1], x: [0, -15, 0], y: [0, 20, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
         <motion.div
-          className="absolute bottom-10 left-1/3 w-88 h-88 rounded-full bg-rose-200/25 dark:bg-rose-500/10 blur-3xl"
-          animate={{ scale: [1, 1.15, 1], y: [0, -25, 0] }}
+          className="absolute bottom-10 left-1/3 w-72 h-72 rounded-full bg-rose-100/15 sm:bg-rose-200/18 dark:bg-rose-500/8 blur-3xl"
+          animate={{ scale: [1, 1.1, 1], y: [0, -20, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
         />
       </div>

@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --bg-dot: rgba(244, 63, 94, 0.08);
+    --bg-dot: rgba(225, 29, 72, 0.04);
   }
   .dark {
-    --bg-dot: rgba(244, 114, 182, 0.08);
+    --bg-dot: rgba(244, 114, 182, 0.05);
   }
 
   html {
@@ -22,13 +22,13 @@
     min-height: 100vh;
     overflow-x: clip;
     overflow-y: auto;
-    background-color: #fff8fa;
+    background-color: #fdfafb;
     color: #1f1224;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .dark body {
-    background-color: #160c18;
+    background-color: #120a14;
     color: #fce7f3;
   }
 }

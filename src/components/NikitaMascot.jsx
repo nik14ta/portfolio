@@ -1,21 +1,54 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Heart, MessageCircle } from 'lucide-react';
+import { Sparkles, Volume2, VolumeX } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundManager } from '../utils/audio';
 
 export default function NikitaMascot() {
   const [messageIndex, setMessageIndex] = useState(0);
   const [isWaving, setIsWaving] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const messages = [
-    "Hi, it's Nikita! ✨ Welcome to my portfolio! 🌸",
-    "I love building autonomous AI agents & aesthetic web apps! 💻💖",
+    "Hi, welcome to my portfolio! ✨🌸",
+    "I'm Nikita — Full Stack & AI Developer! 💻💖",
     "Check out my NPTEL Silver Medal (78%) below! 🥈✨",
     "Interned at BKNetwork & Punjab & Haryana High Court! 🏢📜",
     "Have a question? Try chatting with my AI bot in the corner! 🤖💕",
     "Thanks for visiting! Feel free to say hi! 💌",
   ];
+
+  // Browser Text-To-Speech with a cute, friendly voice pitch
+  const speakMessage = (text) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel(); // Stop any pending speech
+      // Clean emojis out for smoother speech synthesis
+      const cleanText = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+
+      // Look for a pleasant female voice (e.g. Google US English, Samantha, Zira)
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(
+        (v) =>
+          (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Zira') || v.name.includes('Natural') || v.name.includes('Female')) &&
+          v.lang.startsWith('en')
+      ) || voices.find((v) => v.lang.startsWith('en'));
+
+      if (preferredVoice) utterance.voice = preferredVoice;
+      utterance.rate = 1.05; // Slightly lively
+      utterance.pitch = 1.25; // Gentle, friendly, youthful pitch
+
+      utterance.onstart = () => setIsSpeaking(true);
+      utterance.onend = () => setIsSpeaking(false);
+      utterance.onerror = () => setIsSpeaking(false);
+
+      window.speechSynthesis.speak(utterance);
+    } catch (e) {
+      console.warn('Speech synthesis error:', e);
+      setIsSpeaking(false);
+    }
+  };
 
   const handleMascotClick = () => {
     soundManager.playPop();
@@ -24,13 +57,15 @@ export default function NikitaMascot() {
 
     // Cute pink & rose confetti burst!
     confetti({
-      particleCount: 40,
-      spread: 55,
+      particleCount: 35,
+      spread: 50,
       origin: { y: 0.5, x: 0.8 },
       colors: ['#fb7185', '#f43f5e', '#ec4899', '#fbcfe8', '#fda4af', '#f472b6'],
     });
 
-    setMessageIndex((prev) => (prev + 1) % messages.length);
+    const nextIndex = (messageIndex + 1) % messages.length;
+    setMessageIndex(nextIndex);
+    speakMessage(messages[nextIndex]);
   };
 
   return (
@@ -56,10 +91,19 @@ export default function NikitaMascot() {
             <span>{messages[messageIndex]}</span>
           </div>
 
-          {/* Click me hint badge */}
-          <div className="mt-1 text-[10px] font-medium text-pink-400 dark:text-pink-400 flex items-center justify-center gap-1">
-            <Sparkles className="w-2.5 h-2.5" />
-            <span>tap me to chat!</span>
+          {/* Click me hint badge with sound icon */}
+          <div className="mt-1 text-[10px] font-medium text-pink-500 dark:text-pink-300 flex items-center justify-center gap-1.5">
+            {isSpeaking ? (
+              <>
+                <Volume2 className="w-3 h-3 animate-pulse text-rose-500" />
+                <span className="font-semibold text-rose-600 dark:text-rose-300">speaking...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-2.5 h-2.5" />
+                <span>tap me to speak! 🔊</span>
+              </>
+            )}
           </div>
 
           {/* Bubble tail pointing down to mascot */}
