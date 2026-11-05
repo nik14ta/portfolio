@@ -24,7 +24,7 @@ export default function NikitaMascot() {
     try {
       window.speechSynthesis.cancel(); // Stop any pending speech
       // Clean emojis out for smoother speech synthesis
-      const cleanText = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
+      const cleanText = text.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
       const utterance = new SpeechSynthesisUtterance(cleanText);
 
       // Look for a pleasant female voice (e.g. Google US English, Samantha, Zira)
@@ -187,15 +187,6 @@ export default function NikitaMascot() {
         <motion.div
           className="mt-2.5 px-3.5 py-1 rounded-full bg-white/95 dark:bg-pink-950/70 border border-pink-300/70 dark:border-pink-800/60 text-[11px] font-bold text-pink-700 dark:text-pink-300 shadow-xs flex items-center justify-center gap-1.5 mx-auto w-fit"
           whileHover={{ scale: 1.06 }}
-        >
-          <span>💖 Nikita's Avatar</span>
-        </motion.div>
-      </motion.div>
-
-        {/* "Tap Me!" Pill under character */}
-        <motion.div
-          className="mt-1 px-3 py-1 rounded-full bg-pink-100/90 dark:bg-pink-950/70 border border-pink-300/70 dark:border-pink-800/60 text-[11px] font-bold text-pink-700 dark:text-pink-300 shadow-xs flex items-center justify-center gap-1.5"
-          whileHover={{ scale: 1.08 }}
         >
           <span>💖 Nikita's Avatar</span>
         </motion.div>
