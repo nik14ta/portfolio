@@ -3,7 +3,7 @@ export const portfolioData = {
     name: "Nikita Rathour",
     role: "Full Stack Developer & AI Engineer",
     title: "Building Agentic AI Systems, RAG Pipelines & Scalable Web Applications",
-    bio: "Full Stack Developer and AI Engineer with hands-on experience engineering multi-node agentic AI workflows (LangGraph), hybrid RAG pipelines, FastAPI, React.js, and scalable cloud architectures. Proven industry experience from an enterprise software development internship building production HRMS and LMS solutions.",
+    bio: "I'm a full-stack developer and AI engineer who loves turning complex systems into clean, responsive web experiences. I build autonomous agents with LangGraph, fast APIs with Python, and interactive frontends with React — with industry internship experience shipping production software.",
     location: "India (Open to Remote Worldwide)",
     email: "nikitarathour14@gmail.com",
     phone: "+91 7078723768",
@@ -26,10 +26,10 @@ export const portfolioData = {
   },
 
   about: {
-    lead: "Engineering resilient full-stack web platforms and production-grade agentic AI systems.",
+    lead: "Building useful AI tools and modern web apps with curiosity and attention to detail.",
     paragraphs: [
-      "Hi! I'm Nikita Rathour, a Full Stack Developer and AI Engineer pursuing my Bachelor of Technology in Computer Science & Engineering at Haridwar University (2023–2027). I specialize in architecting autonomous AI agents with LangGraph/LangChain, production RAG pipelines, and full-stack web platforms using React.js, FastAPI, Python, and PostgreSQL.",
-      "During my software development internship at BKNetwork Services Pvt. Ltd., I engineered core modules for enterprise HRMS and LMS platforms deployed to live production. I also contributed QA testing and authored technical user documentation for the official Punjab & Haryana High Court judicial web platform. I am a competitive problem-solver, securing a Top 10% ranking (12th / 121 teams) in the ACM Shivalik Hackathon, an Elite + Silver Medal (78%) in NPTEL AI for Computer Vision, and being shortlisted in the Smart India Hackathon (SIH).",
+      "Hey there! I'm Nikita, a Computer Science student at Haridwar University (2023–2027) passionate about AI and web development. I love the balance between deep engineering — like building multi-step AI agents with LangGraph or optimizing RAG pipelines — and designing warm, aesthetic user interfaces that people actually enjoy using.",
+      "Beyond college, I worked as a software engineering intern at BKNetwork Services where I built live enterprise HRMS/LMS features, and contributed QA testing and documentation for the Punjab & Haryana High Court judicial platform. When I'm not coding, you'll probably find me at a cafe exploring new ideas or competing in hackathons!",
     ],
     highlights: [
       "Scored 78% (Elite + Silver Medal) in NPTEL Genetic / Generative AI for Computer Vision.",

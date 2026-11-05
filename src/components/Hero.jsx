@@ -87,27 +87,27 @@ export default function Hero({ openCommandPalette }) {
 
             <motion.p
               variants={staggerItem}
-              className="text-lg sm:text-2xl font-normal text-rose-950/70 dark:text-pink-200/80 leading-snug"
+              className="text-lg sm:text-2xl font-normal text-rose-950/80 dark:text-pink-200/90 leading-snug"
             >
-              Full Stack Developer &amp; AI Engineer crafting{' '}
+              Building thoughtful{' '}
               <motion.span
                 className="text-pink-700 dark:text-pink-300 font-semibold underline decoration-pink-300 dark:decoration-pink-600 underline-offset-4"
                 whileHover={{ color: '#f43f5e' }}
               >
-                agentic AI systems
+                agentic AI tools
               </motion.span>
-              ,{' '}
+              , smart{' '}
               <motion.span
                 className="text-purple-700 dark:text-purple-300 font-semibold underline decoration-purple-300 dark:decoration-purple-600 underline-offset-4"
                 whileHover={{ color: '#a855f7' }}
               >
-                hybrid RAG pipelines
+                search pipelines
               </motion.span>
-              , and modern web applications with love. 💖
+              , and clean, aesthetic web apps. 💖
             </motion.p>
 
             <motion.p variants={staggerItem} className="text-sm sm:text-base text-zinc-600 dark:text-pink-100/70 leading-relaxed max-w-xl">
-              B.Tech in Computer Science &amp; Engineering at Haridwar University. Enterprise software engineering at BKNetwork Services and Punjab &amp; Haryana High Court.
+              CS undergrad at Haridwar University. Previously interned at BKNetwork Services and Punjab &amp; Haryana High Court. Open to full-time &amp; internship roles!
             </motion.p>
 
             {/* CTAs in Pinterest Palette */}
