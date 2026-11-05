@@ -33,8 +33,8 @@ export default function SpotlightCursor({ isDark }) {
       className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
       style={{
         background: isDark
-          ? `radial-gradient(650px circle at ${pos.x}px ${pos.y}px, rgba(99, 102, 241, 0.08), transparent 80%)`
-          : `radial-gradient(550px circle at ${pos.x}px ${pos.y}px, rgba(129, 140, 248, 0.06), transparent 80%)`,
+          ? `radial-gradient(650px circle at ${pos.x}px ${pos.y}px, rgba(244, 114, 182, 0.08), transparent 80%)`
+          : `radial-gradient(550px circle at ${pos.x}px ${pos.y}px, rgba(251, 113, 133, 0.09), transparent 80%)`,
       }}
     />
   );

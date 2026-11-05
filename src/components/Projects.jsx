@@ -43,14 +43,14 @@ export default function Projects() {
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3">
-            <Code2 className="w-3.5 h-3.5 text-zinc-500" />
-            <span>Featured Case Studies</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-pink-100/80 dark:bg-pink-950/70 border border-pink-200 dark:border-pink-800 text-pink-700 dark:text-pink-300 mb-3 shadow-2xs">
+            <Code2 className="w-3.5 h-3.5 text-rose-500" />
+            <span>Featured Case Studies 🌸</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-pink-50">
             Engineered Systems &amp; Products
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-pink-200/70">
             Detailed case studies with real architectural decisions, challenges faced, and system workflows.
           </p>
         </motion.div>
@@ -66,10 +66,10 @@ export default function Projects() {
             <motion.button
               key={cat}
               onClick={() => handleFilterClick(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                 activeCategory === cat
-                  ? 'bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900'
-                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200/80 dark:border-zinc-800'
+                  ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-sm shadow-pink-500/20'
+                  : 'bg-white/80 dark:bg-pink-950/40 text-pink-950/80 dark:text-pink-200 border border-pink-200/60 dark:border-pink-900/50 hover:bg-pink-50/80 dark:hover:bg-pink-900/40'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -95,7 +95,7 @@ export default function Projects() {
                 layout
                 exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                 whileHover={{ y: -6, transition: { duration: 0.22, ease: 'easeOut' } }}
-                className="flex flex-col rounded-2xl bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs group cursor-default"
+                className="flex flex-col rounded-3xl bg-white/90 dark:bg-pink-950/30 border border-pink-100 dark:border-pink-900/40 overflow-hidden shadow-xs hover:border-pink-300 dark:hover:border-pink-700/60 card-glow transition-all duration-200 group cursor-default"
               >
                 {/* Technical Preview */}
                 <motion.div

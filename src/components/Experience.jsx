@@ -37,14 +37,14 @@ export default function Experience() {
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/50 mb-3">
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>Career Milestones</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-pink-100/80 dark:bg-pink-950/70 text-pink-700 dark:text-pink-300 border border-pink-200 dark:border-pink-800 mb-3 shadow-2xs">
+            <Briefcase className="w-3.5 h-3.5 text-rose-500" />
+            <span>Career Milestones ✨</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            Experience, Education &amp; Hackathons
+          <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-pink-50 tracking-tight">
+            Experience, Education &amp; Honors
           </h2>
-          <p className="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+          <p className="mt-3 text-zinc-600 dark:text-pink-200/70 text-sm sm:text-base">
             Enterprise software development, competitive hackathon standings, and academic foundations.
           </p>
         </motion.div>
@@ -56,7 +56,7 @@ export default function Experience() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 flex-wrap justify-center gap-1">
+          <div className="inline-flex p-1.5 rounded-2xl bg-white/80 dark:bg-pink-950/60 border border-pink-200/60 dark:border-pink-900/60 flex-wrap justify-center gap-1 shadow-sm">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -66,8 +66,8 @@ export default function Experience() {
                   onClick={() => { soundManager.playPop(); setActiveTab(tab.id); }}
                   className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
                     isActive
-                      ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-xs'
+                      : 'text-zinc-600 dark:text-pink-200/70 hover:text-pink-700 dark:hover:text-pink-100'
                   }`}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.96 }}

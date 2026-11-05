@@ -78,9 +78,9 @@ export default function Contact() {
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3">
-            <MessageSquare className="w-3.5 h-3.5 text-zinc-500" />
-            <span>Get in Touch</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/60 text-rose-700 dark:text-rose-300 mb-3">
+            <MessageSquare className="w-3.5 h-3.5 text-rose-500" />
+            <span>Get in Touch 💌</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Let's Connect &amp; Build
@@ -110,7 +110,7 @@ export default function Contact() {
                   className="p-4 rounded-xl bg-white dark:bg-zinc-900/70 border border-zinc-200/90 dark:border-zinc-800/90 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-700 dark:text-zinc-300 shrink-0">
+                    <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-950/70 dark:to-pink-950/70 flex items-center justify-center text-rose-600 dark:text-rose-300 shrink-0 border border-rose-200/50 dark:border-rose-800/40 shadow-xs">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
@@ -233,8 +233,8 @@ export default function Contact() {
                             value={formData[field]}
                             onChange={handleChange}
                             placeholder={field === 'email' ? 'your.email@example.com' : 'Your name'}
-                            className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent text-xs text-zinc-900 dark:text-zinc-100 outline-none focus:border-zinc-500 transition-colors"
-                            whileFocus={{ scale: 1.01, borderColor: '#6366f1' }}
+                            className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent text-xs text-zinc-900 dark:text-zinc-100 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200/50 transition-all"
+                            whileFocus={{ scale: 1.01 }}
                           />
                         </div>
                       ))}
@@ -248,7 +248,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         placeholder="Opportunity / Project inquiry"
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent text-xs text-zinc-900 dark:text-zinc-100 outline-none focus:border-zinc-500 transition-colors"
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent text-xs text-zinc-900 dark:text-zinc-100 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200/50 transition-all"
                         whileFocus={{ scale: 1.01 }}
                       />
                     </div>
@@ -262,20 +262,20 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Hi Nikita, I'd like to talk about..."
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent text-xs text-zinc-900 dark:text-zinc-100 outline-none focus:border-zinc-500 resize-none transition-colors"
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-transparent text-xs text-zinc-900 dark:text-zinc-100 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200/50 resize-none transition-all"
                         whileFocus={{ scale: 1.01 }}
                       />
                     </div>
 
                     <motion.button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 font-semibold text-xs shadow-xs"
-                      whileHover={{ scale: 1.02, opacity: 0.92 }}
+                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-semibold text-xs shadow-md shadow-rose-500/25 transition-all"
+                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ duration: 0.16 }}
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>Send Message</span>
+                      <span>Send Message ✨</span>
                     </motion.button>
                   </motion.form>
                 )}

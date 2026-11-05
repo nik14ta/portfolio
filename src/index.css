@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --bg-dot: rgba(0, 0, 0, 0.05);
+    --bg-dot: rgba(244, 63, 94, 0.08);
   }
   .dark {
-    --bg-dot: rgba(255, 255, 255, 0.04);
+    --bg-dot: rgba(244, 114, 182, 0.08);
   }
 
   html {
@@ -22,26 +22,26 @@
     min-height: 100vh;
     overflow-x: clip;
     overflow-y: auto;
-    background-color: #fafafa;
-    color: #09090b;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    background-color: #fff8fa;
+    color: #1f1224;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .dark body {
-    background-color: #09090b;
-    color: #f4f4f5;
+    background-color: #160c18;
+    color: #fce7f3;
   }
 }
 
-/* Subtle modern architectural dot grid background */
+/* Pinterest dreamy dot grid pattern */
 .bg-grid-pattern {
-  background-image: radial-gradient(var(--bg-dot) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(var(--bg-dot) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
 }
 
-/* Subtle noise texture */
+/* Subtle soft noise texture */
 .noise-overlay {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
 }
 
 /* ── Keyframe animations ── */
@@ -56,6 +56,11 @@
   50%       { transform: translateY(-8px);  }
 }
 
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(2deg); }
+}
+
 @keyframes gradientShift {
   0%   { background-position: 0% 50%;   }
   50%  { background-position: 100% 50%; }
@@ -63,8 +68,13 @@
 }
 
 @keyframes borderPulse {
-  0%, 100% { border-color: rgba(99,102,241,0.3);  }
-  50%       { border-color: rgba(99,102,241,0.8);  }
+  0%, 100% { border-color: rgba(244,63,94,0.3); }
+  50%       { border-color: rgba(244,63,94,0.8); }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.05); }
 }
 
 @keyframes slideInLeft {
@@ -79,61 +89,67 @@
 
 /* Utility classes */
 .animate-float        { animation: float 4s ease-in-out infinite; }
-.animate-gradient     { animation: gradientShift 5s ease infinite; background-size: 200% 200%; }
+.animate-float-slow   { animation: floatSlow 6s ease-in-out infinite; }
+.animate-gradient     { animation: gradientShift 6s ease infinite; background-size: 200% 200%; }
 .animate-border-pulse { animation: borderPulse 2.4s ease-in-out infinite; }
 .animate-slide-left   { animation: slideInLeft 0.5s cubic-bezier(0.22,1,0.36,1) both; }
 .animate-slide-up     { animation: slideInUp  0.5s cubic-bezier(0.22,1,0.36, 1) both; }
 
-/* Shimmer text effect for section headings */
+/* Pinterest Rose Gold / Peony Shimmer text effect */
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    #09090b 0%, #09090b 35%,
-    #6366f1 50%,
-    #09090b 65%, #09090b 100%
+    #881337 0%, #be123c 25%,
+    #fb7185 45%,
+    #a855f7 65%,
+    #e11d48 85%, #881337 100%
   );
-  background-size: 200% auto;
+  background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
+  animation: shimmer 5s linear infinite;
 }
+
 .dark .text-shimmer {
   background: linear-gradient(
     90deg,
-    #f4f4f5 0%, #f4f4f5 35%,
-    #818cf8 50%,
-    #f4f4f5 65%, #f4f4f5 100%
+    #fce7f3 0%, #f472b6 25%,
+    #fb7185 45%,
+    #c084fc 65%,
+    #fda4af 85%, #fce7f3 100%
   );
-  background-size: 200% auto;
+  background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
+  animation: shimmer 5s linear infinite;
 }
 
-/* Card glow on hover */
+/* Pinterest dreamy card glow on hover */
 .card-glow {
-  transition: box-shadow 0.25s ease;
+  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .card-glow:hover {
-  box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.08);
+  box-shadow: 0 0 0 1.5px rgba(244,63,94,0.35), 0 12px 36px rgba(244,63,94,0.12);
+  transform: translateY(-3px);
 }
 .dark .card-glow:hover {
-  box-shadow: 0 0 0 1px rgba(129,140,248,0.25), 0 8px 32px rgba(129,140,248,0.1);
+  box-shadow: 0 0 0 1.5px rgba(244,114,182,0.4), 0 12px 36px rgba(244,114,182,0.15);
+  transform: translateY(-3px);
 }
 
-/* Custom sleek scrollbar */
+/* Custom sleek rose-tinted scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(161, 161, 170, 0.3);
+  background: rgba(244, 114, 182, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(161, 161, 170, 0.6);
+  background: rgba(244, 63, 94, 0.65);
 }

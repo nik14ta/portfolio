@@ -333,8 +333,8 @@ export default function PortfolioAIChat() {
           }}
           className={`flex items-center gap-2.5 px-4 py-3 rounded-full shadow-2xl transition-all ${
             isOpen
-              ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900'
-              : 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white'
+              ? 'bg-rose-950 dark:bg-pink-100 text-white dark:text-zinc-900'
+              : 'bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:to-purple-600 text-white shadow-pink-500/25'
           }`}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -364,20 +364,20 @@ export default function PortfolioAIChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.95 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-22 right-4 sm:right-6 z-40 w-[92vw] sm:w-[420px] max-h-[82vh] h-[600px] flex flex-col rounded-3xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden"
+            className="fixed bottom-22 right-4 sm:right-6 z-40 w-[92vw] sm:w-[420px] max-h-[82vh] h-[600px] flex flex-col rounded-3xl bg-white/95 dark:bg-pink-950/95 border border-pink-200 dark:border-pink-800/80 shadow-2xl overflow-hidden backdrop-blur-xl"
           >
             {/* Header */}
-            <div className="p-4 bg-zinc-50 dark:bg-zinc-900/90 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between shrink-0">
+            <div className="p-4 bg-pink-50/90 dark:bg-pink-900/40 border-b border-pink-200/80 dark:border-pink-800/60 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-xs">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-500 via-pink-500 to-purple-500 flex items-center justify-center text-white shadow-xs">
                   <Bot className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+                  <div className="text-xs font-bold text-zinc-900 dark:text-pink-100 flex items-center gap-1.5">
                     <span>Nikita's Portfolio AI</span>
                     <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
                   </div>
-                  <div className="text-[11px] text-zinc-500">Ask anything about her work</div>
+                  <div className="text-[11px] text-pink-600 dark:text-pink-300">Ask anything about her work 🌸</div>
                 </div>
               </div>
 

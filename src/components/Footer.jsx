@@ -69,8 +69,8 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p>© {new Date().getFullYear()} Nikita Rathour. Crafted with React 19 &amp; Tailwind.</p>
-          <p>Available for Software Developer &amp; Full Stack Roles.</p>
+          <p>© {new Date().getFullYear()} Nikita Rathour. Crafted with 💖, React 19 &amp; Tailwind.</p>
+          <p>Available for Software Developer &amp; Full Stack Roles 🌸</p>
         </motion.div>
       </div>
     </footer>

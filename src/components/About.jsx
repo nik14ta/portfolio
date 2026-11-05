@@ -54,9 +54,9 @@ export default function About() {
             initial="hidden"
             animate={isInView ? 'show' : 'hidden'}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">
-              <User className="w-3.5 h-3.5 text-zinc-500" />
-              <span>Background &amp; Philosophy</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/60 text-rose-700 dark:text-rose-300">
+              <User className="w-3.5 h-3.5 text-rose-500" />
+              <span>Background &amp; Story ✨</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -123,7 +123,7 @@ export default function About() {
                     className="p-4 rounded-xl bg-white dark:bg-zinc-900/70 border border-zinc-200/90 dark:border-zinc-800/90 shadow-xs flex items-start gap-3.5"
                   >
                     <motion.div
-                      className="w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center shrink-0"
+                      className="w-9 h-9 rounded-lg bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-950/70 dark:to-pink-950/70 text-rose-600 dark:text-rose-300 flex items-center justify-center shrink-0 border border-rose-200/50 dark:border-rose-800/40 shadow-xs"
                       whileHover={{ rotate: 8, scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
