@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Volume2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -8,6 +8,8 @@ export default function NikitaMascot() {
   const [messageIndex, setMessageIndex] = useState(0);
   const [isWaving, setIsWaving] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [voices, setVoices] = useState([]);
+  const voicesRef = useRef([]);
 
   const messages = [
     "Hi, welcome to my portfolio! ✨🌸",
@@ -18,55 +20,79 @@ export default function NikitaMascot() {
     "Thanks for visiting! Feel free to say hi! 💌",
   ];
 
-  // Helper to pick guaranteed pleasant female voice across Windows (Zira/Jenny), Android/Chrome (Google UK/US Female), iOS (Samantha/Karen)
+  // Proactively load and cache all browser voices (Chrome/Edge load voices asynchronously)
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+
+    const updateVoices = () => {
+      const loaded = window.speechSynthesis.getVoices();
+      if (loaded && loaded.length > 0) {
+        setVoices(loaded);
+        voicesRef.current = loaded;
+      }
+    };
+
+    updateVoices();
+    window.speechSynthesis.onvoiceschanged = updateVoices;
+    const timer = setTimeout(updateVoices, 300);
+
+    return () => {
+      clearTimeout(timer);
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = null;
+      }
+    };
+  }, []);
+
+  // Strict female voice selector with zero possibility of falling back to a male voice
   const getFemaleVoice = () => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
-    const voices = window.speechSynthesis.getVoices();
-    if (!voices || voices.length === 0) return null;
+    const available = voicesRef.current.length > 0 ? voicesRef.current : window.speechSynthesis.getVoices();
+    if (!available || available.length === 0) return null;
 
-    // Prioritized list of known high-quality female voices
-    const femaleNames = [
-      'Microsoft Zira',
-      'Microsoft Jenny',
-      'Google UK English Female',
-      'Google US English',
-      'Samantha',
-      'Karen',
-      'Victoria',
-      'Moira',
-      'Fiona',
-      'Tessa',
-      'Veena',
-      'Heera',
+    // 1. Explicit Male Blacklist — NEVER select any of these
+    const maleNames = [
+      'david', 'mark', 'george', 'ravi', 'guy', 'andrew', 'brian', 
+      'ryan', 'prabhat', 'christopher', 'eric', 'frank', 'oliver', 
+      'alfie', 'william', 'liam', 'james', 'richard', 'male'
     ];
 
-    for (const name of femaleNames) {
-      const match = voices.find((v) => v.name.toLowerCase().includes(name.toLowerCase()));
+    const isMale = (v) => {
+      const name = (v.name || '').toLowerCase();
+      return maleNames.some((m) => name.includes(m));
+    };
+
+    // 2. High-priority known natural female voices
+    const priorityFemales = [
+      'jenny', 'aria', 'zira', 'sonia', 'libby', 'samantha', 'karen', 
+      'victoria', 'emma', 'ana', 'michelle', 'clara', 'natasha', 
+      'swara', 'ananya', 'veena', 'heera', 'fiona', 'moira', 'tessa'
+    ];
+
+    for (const femaleName of priorityFemales) {
+      const match = available.find((v) => {
+        const name = (v.name || '').toLowerCase();
+        return name.includes(femaleName) && !isMale(v);
+      });
       if (match) return match;
     }
 
-    // Secondary search: explicitly contains 'female' in the voice name/metadata
-    const anyFemale = voices.find(
-      (v) =>
-        v.lang.startsWith('en') &&
-        (v.name.toLowerCase().includes('female') ||
-          v.name.toLowerCase().includes('woman') ||
-          v.name.toLowerCase().includes('girl'))
-    );
-    if (anyFemale) return anyFemale;
+    // 3. Any voice explicitly tagged 'female' or 'woman'
+    const taggedFemale = available.find((v) => {
+      const name = (v.name || '').toLowerCase();
+      return (name.includes('female') || name.includes('woman') || name.includes('girl')) && !isMale(v);
+    });
+    if (taggedFemale) return taggedFemale;
 
-    // Fallback: pick any English voice that is NOT David, Mark, George, or Ravi (common male defaults on Windows)
-    const notMale = voices.find(
-      (v) =>
-        v.lang.startsWith('en') &&
-        !v.name.toLowerCase().includes('david') &&
-        !v.name.toLowerCase().includes('mark') &&
-        !v.name.toLowerCase().includes('george') &&
-        !v.name.toLowerCase().includes('ravi')
-    );
-    if (notMale) return notMale;
+    // 4. Any English voice that is NOT in the male blacklist
+    const anySafeEnglish = available.find((v) => v.lang && v.lang.startsWith('en') && !isMale(v));
+    if (anySafeEnglish) return anySafeEnglish;
 
-    return voices[0] || null;
+    // 5. Any voice in the entire system that is NOT male
+    const anyNonMale = available.find((v) => !isMale(v));
+    if (anyNonMale) return anyNonMale;
+
+    return null;
   };
 
   // Browser Text-To-Speech with guaranteed female voice & youthful pitch
@@ -82,8 +108,8 @@ export default function NikitaMascot() {
         utterance.voice = femaleVoice;
       }
 
-      utterance.rate = 1.02; // Natural, lively pace
-      utterance.pitch = 1.35; // Gentle, friendly, distinctly feminine pitch
+      utterance.rate = 1.0; // Natural pace
+      utterance.pitch = 1.4; // Distinctly bright, friendly female pitch
 
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
