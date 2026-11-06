@@ -10,7 +10,7 @@ export const portfolioData = {
     avatar: "https://avatars.githubusercontent.com/u/160528272?v=4",
     availability: "Seeking Software Developer / Full Stack / AI Engineer Roles",
     statusBadge: "🟢 Actively seeking entry-level Software Developer or Full Stack Engineer roles",
-    resumeUrl: "#",
+    resumeUrl: "/Nikita_Rathour_Resume.pdf",
     socials: {
       github: "https://github.com/nik14ta",
       linkedin: "https://www.linkedin.com/in/nikita-rathour-6a88ba2a8",

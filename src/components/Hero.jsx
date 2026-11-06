@@ -125,6 +125,19 @@ export default function Hero({ openCommandPalette }) {
               </motion.a>
 
               <motion.a
+                href={personal.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => soundManager.playPop()}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/90 dark:bg-pink-950/60 border border-pink-200/80 dark:border-pink-800/60 text-pink-900 dark:text-pink-200 font-semibold text-xs sm:text-sm hover:bg-pink-50/80 dark:hover:bg-pink-900/50 shadow-2xs"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ duration: 0.18 }}
+              >
+                <span>View Resume 📄</span>
+              </motion.a>
+
+              <motion.a
                 href="#contact"
                 onClick={handleHireClick}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/90 dark:bg-pink-950/60 border border-pink-200/80 dark:border-pink-800/60 text-pink-900 dark:text-pink-200 font-semibold text-xs sm:text-sm hover:bg-pink-50/80 dark:hover:bg-pink-900/50 shadow-2xs"
