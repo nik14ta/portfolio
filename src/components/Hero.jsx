@@ -26,20 +26,20 @@ export default function Hero({ openCommandPalette }) {
   return (
     <section id="hero" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
 
-      {/* Floating Dreamy Ambient Orbs (Soft, muted on mobile to prevent over-saturation) */}
+      {/* Floating Ambient Warmth Orbs (Subtle Peach, Warm Almond & Soft Rose) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-24 -left-20 w-[380px] h-[380px] rounded-full bg-pink-200/15 sm:bg-pink-300/20 dark:bg-pink-600/8 blur-3xl"
+          className="absolute -top-24 -left-20 w-[380px] h-[380px] rounded-full bg-amber-200/12 sm:bg-amber-200/15 dark:bg-amber-600/6 blur-3xl"
           animate={{ scale: [1, 1.15, 1], x: [0, 20, 0], y: [0, -15, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-purple-200/15 sm:bg-purple-300/18 dark:bg-purple-600/8 blur-3xl"
+          className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-rose-200/12 sm:bg-rose-200/15 dark:bg-rose-600/6 blur-3xl"
           animate={{ scale: [1, 1.12, 1], x: [0, -15, 0], y: [0, 20, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
         <motion.div
-          className="absolute bottom-10 left-1/3 w-72 h-72 rounded-full bg-rose-100/15 sm:bg-rose-200/18 dark:bg-rose-500/8 blur-3xl"
+          className="absolute bottom-10 left-1/3 w-72 h-72 rounded-full bg-orange-100/12 sm:bg-orange-100/15 dark:bg-orange-500/6 blur-3xl"
           animate={{ scale: [1, 1.1, 1], y: [0, -20, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
         />
