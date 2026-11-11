@@ -56,6 +56,7 @@ export default function Contact() {
       value: personal.email,
       action: handleCopyEmail,
       copied: copiedEmail,
+      href: `mailto:${personal.email}`,
     },
     {
       icon: Phone,
@@ -109,14 +110,18 @@ export default function Contact() {
                   transition={{ duration: 0.18 }}
                   className="p-4 rounded-xl bg-white dark:bg-zinc-900/70 border border-zinc-200/90 dark:border-zinc-800/90 flex items-center justify-between"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-950/70 dark:to-pink-950/70 flex items-center justify-center text-rose-600 dark:text-rose-300 shrink-0 border border-rose-200/50 dark:border-rose-800/40 shadow-xs">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <div className="text-[10px] uppercase font-mono tracking-wider text-zinc-400">{card.label}</div>
                       {card.href ? (
-                        <a href={card.href} className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:underline">
+                        <a 
+                          href={card.href} 
+                          className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:text-rose-600 dark:hover:text-rose-400 hover:underline block truncate transition-colors"
+                          title={card.label === 'Email' ? 'Open in mail client' : 'Call number'}
+                        >
                           {card.value}
                         </a>
                       ) : (

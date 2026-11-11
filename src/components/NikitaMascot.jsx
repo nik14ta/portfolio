@@ -27,17 +27,24 @@ export default function NikitaMascot() {
     const updateVoices = () => {
       const loaded = window.speechSynthesis.getVoices();
       if (loaded && loaded.length > 0) {
-        setVoices(loaded);
         voicesRef.current = loaded;
+        setVoices(loaded);
       }
     };
 
+    // Try immediately
     updateVoices();
+    // Chrome fires this event when voices finish loading
     window.speechSynthesis.onvoiceschanged = updateVoices;
-    const timer = setTimeout(updateVoices, 300);
+    // Multiple retries to handle slow-loading browsers
+    const t1 = setTimeout(updateVoices, 100);
+    const t2 = setTimeout(updateVoices, 500);
+    const t3 = setTimeout(updateVoices, 1500);
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
         window.speechSynthesis.onvoiceschanged = null;
       }
@@ -45,16 +52,15 @@ export default function NikitaMascot() {
   }, []);
 
   // Strict female voice selector with zero possibility of falling back to a male voice
-  const getFemaleVoice = () => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
-    const available = voicesRef.current.length > 0 ? voicesRef.current : window.speechSynthesis.getVoices();
+  const getFemaleVoice = (available) => {
     if (!available || available.length === 0) return null;
 
     // 1. Explicit Male Blacklist — NEVER select any of these
     const maleNames = [
-      'david', 'mark', 'george', 'ravi', 'guy', 'andrew', 'brian', 
-      'ryan', 'prabhat', 'christopher', 'eric', 'frank', 'oliver', 
-      'alfie', 'william', 'liam', 'james', 'richard', 'male'
+      'david', 'mark', 'george', 'ravi', 'guy', 'andrew', 'brian',
+      'ryan', 'prabhat', 'christopher', 'eric', 'frank', 'oliver',
+      'alfie', 'william', 'liam', 'james', 'richard', 'male', 'fred',
+      'alex', 'tom', 'albert', 'donald', 'ralph', 'wayne'
     ];
 
     const isMale = (v) => {
@@ -62,11 +68,28 @@ export default function NikitaMascot() {
       return maleNames.some((m) => name.includes(m));
     };
 
-    // 2. High-priority known natural female voices
+    // 2. High-priority known natural female voices (Windows/Mac/Android)
     const priorityFemales = [
-      'jenny', 'aria', 'zira', 'sonia', 'libby', 'samantha', 'karen', 
-      'victoria', 'emma', 'ana', 'michelle', 'clara', 'natasha', 
-      'swara', 'ananya', 'veena', 'heera', 'fiona', 'moira', 'tessa'
+      'zira',       // Microsoft Zira - Windows reliable female
+      'jenny',      // Microsoft Jenny Natural
+      'aria',       // Microsoft Aria Natural
+      'sonia',      // Microsoft Sonia
+      'libby',      // Microsoft Libby
+      'samantha',   // Apple Samantha (macOS)
+      'karen',      // Apple Karen (Australian)
+      'victoria',   // Apple Victoria
+      'fiona',      // Apple Fiona (Scottish)
+      'moira',      // Apple Moira (Irish)
+      'tessa',      // Apple Tessa (South African)
+      'emma',       // Google Emma
+      'ana',        // Microsoft Ana
+      'michelle',   
+      'clara',
+      'natasha',
+      'swara',      // Indian female
+      'ananya',
+      'veena',
+      'heera',
     ];
 
     for (const femaleName of priorityFemales) {
@@ -95,22 +118,24 @@ export default function NikitaMascot() {
     return null;
   };
 
-  // Browser Text-To-Speech with guaranteed female voice & youthful pitch
-  const speakMessage = (text) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+  // Inner speak function — called once voices are confirmed loaded
+  const doSpeak = (text, availableVoices) => {
     try {
-      window.speechSynthesis.cancel(); // Stop any pending speech
-      const cleanText = text.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim();
+      window.speechSynthesis.cancel();
+      // Remove emoji/surrogate pairs from text
+      const cleanText = text.replace(/[\u{1F000}-\u{1FFFF}]/gu, '').replace(/[\uD800-\uDFFF]/g, '').trim();
       const utterance = new SpeechSynthesisUtterance(cleanText);
 
-      const femaleVoice = getFemaleVoice();
+      const femaleVoice = getFemaleVoice(availableVoices);
       if (femaleVoice) {
         utterance.voice = femaleVoice;
+        console.log('[Voice] Selected:', femaleVoice.name, femaleVoice.lang);
+      } else {
+        console.warn('[Voice] No female voice found, using browser default');
       }
 
-      utterance.rate = 1.0; // Natural pace
-      utterance.pitch = 1.4; // Distinctly bright, friendly female pitch
-
+      utterance.rate = 1.0;
+      utterance.pitch = 1.4;
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
@@ -119,6 +144,43 @@ export default function NikitaMascot() {
     } catch (e) {
       console.warn('Speech synthesis error:', e);
       setIsSpeaking(false);
+    }
+  };
+
+  // Browser Text-To-Speech with guaranteed female voice & youthful pitch
+  const speakMessage = (text) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+
+    // Always do a fresh getVoices() at speak-time — the ref may have been populated
+    const freshVoices = window.speechSynthesis.getVoices();
+    const allVoices = freshVoices.length > 0 ? freshVoices : voicesRef.current;
+
+    if (allVoices && allVoices.length > 0) {
+      // Voices are ready — speak immediately
+      voicesRef.current = allVoices;
+      doSpeak(text, allVoices);
+    } else {
+      // Voices not ready yet — wait for onvoiceschanged then speak
+      setIsSpeaking(true);
+      const handler = () => {
+        const loaded = window.speechSynthesis.getVoices();
+        if (loaded && loaded.length > 0) {
+          voicesRef.current = loaded;
+          window.speechSynthesis.onvoiceschanged = null;
+          doSpeak(text, loaded);
+        }
+      };
+      window.speechSynthesis.onvoiceschanged = handler;
+      // Safety timeout fallback — speak anyway after 1.5s even if voices still empty
+      setTimeout(() => {
+        const latestVoices = window.speechSynthesis.getVoices();
+        if (latestVoices.length > 0) {
+          voicesRef.current = latestVoices;
+          doSpeak(text, latestVoices);
+        } else {
+          doSpeak(text, []);
+        }
+      }, 1500);
     }
   };
 
